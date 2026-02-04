@@ -1,7 +1,338 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>BumsHub</title>
+    <link rel="stylesheet" href = "style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body></body>
-</html>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="logo.png">
+        BumsHub
+      </div>
+      <nav class="nav__menu">
+        <a href="#">Главная</a>
+        <a href="#models_section">Товары</a>
+        <a href="#podval_section">Обратная связь</a>
+      </nav>
+
+      <!-- создаем бургер - меню -->
+      <div class="chicken__burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+    <main>
+      <section class="promo_section" id="promo_section">
+        <img src="1.png" class="promo_img">
+        <div class="promo_text">
+          <h1>Бюджетный - Компьютер</h1>
+          <p>Этот компьютер - ваш надежный помощник.</p>
+          <p>Он легко справляется с повседневными задачами: Общение, Просмотр</p>
+          <p>видео, использование различных приложений для учебы или работы. </p>
+          <p>Идеальный выбор для первого компьютера. </p>
+          <p>Хорошее соотношение цена/качество. </p>
+          <p>Все необходимое - без лишних затрат!</p>
+        </div>
+      </section>
+
+      <a href="#models_section" class="buy_btn">Купить компьютер</a>
+      <div class="filters_section">
+        <h2>Фильтры и сортировка</h2>
+        <form id="filterForm">
+          <!-- Фильтры по цене -->
+          <label for="priceMax">Маскимальная цена(₽):</label>
+          <input type="number" id="priceMax" placeholder="1000000" min="0">
+
+          <!-- Фильтры по видеокарте -->
+          <label for="gpuFilter">Видеокарта:</label>
+          <select id="gpuFilter">
+            <option value="">Все</option> <!-- option - подпункт выпадающего списка -->
+          </select>
+          
+          <!-- Фильтры по процессору -->
+          <label for="cpuFilter">Видеокарта:</label>
+          <select id="cpuFilter">
+            <option value="">Все</option> <!-- option - подпункт выпадающего списка -->
+          </select>
+
+          <!-- Выбор варианта сортировки -->
+          <label for="sortBy">Сортировать по:</label>
+          <select id="sortBy">
+            <option value="">Без сортировки</option>
+            <option value="price_asc">Цене (возрастание)</option>
+            <option value="price_desc">Цене (убывание)</option>
+            <option value="gpu_asc">Видеокарте (A-Z)</option>
+            <option value="gpu_desc">Видеокарте (Z-A)</option>
+            <option value="cpu_asc">Процессору (A-Z)</option>
+            <option value="gpu_desc">Процессору (Z-A)</option>
+          </select>
+
+          <button type="button" id="applyFilters">Применить</button>
+          <button type="button" id="resetFilters">Сбросить</button>
+
+        </form>
+      </div>
+    <section class="models_section" id="models_section">
+      <div class="computer_card card1">
+        <img src="2.png">
+        <div class="specs">
+          <h3>White Bums PC R700</h3>
+          <table>
+            <tr>
+              <td>Цена</td>
+              <td>1200000₽</td>
+            </tr>
+            <tr>
+              <td>Видеокарта</td>
+              <td>RTX 5090 Bums pro</td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>Core i9-14900K </td>
+            </tr>
+          </table>
+          <div class="btn_inCard">
+            <button class="characteristics_btn ch_card1">Характеристики</button>
+            <button class="pre-order_btn ch_card1">Предзаказ</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="computer_card card2">
+        <img src="3.png">
+        <div class="specs">
+          <h3>Black Bums PC G800</h3>
+          <table>
+            <tr>
+              <td>Цена</td>
+              <td>1400000₽</td>
+            </tr>
+            <tr>
+              <td>Видеокарта</td>
+              <td>RTX 4080 Bums pro</td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>Ryzen 9 9800x3d</td>
+            </tr>
+          </table>
+          <div class="btn_inCard">
+            <button class="characteristics_btn ch_card2">Характеристики</button>
+            <button class="pre-order_btn ch_card2">Предзаказ</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="computer_card card3">
+        <img src="4.png">
+        <div class="specs">
+          <h3>Green Bums PC B600</h3>
+          <table>
+            <tr>
+              <td>Цена</td>
+              <td>1100000₽</td>
+            </tr>
+            <tr>
+              <td>Видеокарта</td>
+              <td>RTX 3090Ti </td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>ryzen 7 7800x3d</td>
+            </tr>
+          </table>
+          <div class="btn_inCard">
+            <button class="characteristics_btn ch_card3">Характеристики</button>
+            <button class="pre-order_btn ch_card3">Предзаказ</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="computer_card card4">
+        <img src="5.png">
+        <div class="specs">
+          <h3>Purple Bums PC G800</h3>
+          <table>
+            <tr>
+              <td>Цена</td>
+              <td>1500000₽</td>
+            </tr>
+            <tr>
+              <td>Видеокарта</td>
+              <td>RTX 5090Ti Bums pro</td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>Ryzen 9 9800x3d</td>
+            </tr>
+          </table>
+          <div class="btn_inCard">
+            <button class="characteristics_btn ch_card4">Характеристики</button>
+            <button class="pre-order_btn ch_card4">Предзаказ</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="computer_card card5">
+        <img src="6.png">
+        <div class="specs">
+          <h3>Orange Bums PC F350</h3>
+          <table>
+            <tr>
+              <td>Цена</td>
+              <td>1100000₽</td>
+            </tr>
+            <tr>
+              <td>Видеокарта</td>
+              <td>RTX 4090Ti Bums</td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>intel core i9-14900k</td>
+            </tr>
+          </table>
+          <div class="btn_inCard">
+            <button class="characteristics_btn ch_card5">Характеристики</button>
+            <button class="pre-order_btn ch_card5">Предзаказ</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="computer_card card6">
+        <img src="7.png">
+        <div class="specs">
+          <h3>Blue Bums PC Z550</h3>
+          <table>
+            <tr>
+              <td>Цена</td>
+              <td>500000₽</td>
+            </tr>
+            <tr>
+              <td>Видеокарта</td>
+              <td>RTX 3060</td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>intel core i5 14600k</td>
+            </tr>
+          </table>
+          <div class="btn_inCard">
+            <button class="characteristics_btn ch_card6">Характеристики</button>
+            <button class="pre-order_btn ch_card6">Предзаказ</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="computer_card card7">
+        <img src="8.png">
+        <div class="specs">
+          <h3>Yellow Bums PC C950</h3>
+          <table>
+            <tr>
+              <td>Цена</td>
+              <td>600000₽</td>
+            </tr>
+            <tr>
+              <td>Видеокарта</td>
+              <td>RTX 3070</td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>ryzen 7 7800x3d</td>
+            </tr>
+          </table>
+          <div class="btn_inCard">
+            <button class="characteristics_btn ch_card7">Характеристики</button>
+            <button class="pre-order_btn ch_card7">Предзаказ</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="computer_card card8">
+        <img src="9.png">
+        <div class="specs">
+          <h3>Black Bums PC Y670</h3>
+          <table>
+            <tr>
+              <td>Цена</td>
+              <td>750000₽</td>
+            </tr>
+            <tr>
+              <td>Видеокарта</td>
+              <td>RTX 4070Ti</td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>intel core i6 14600k</td>
+            </tr>
+          </table>
+          <div class="btn_inCard">
+            <button class="characteristics_btn ch_card8">Характеристики</button>
+            <button class="pre-order_btn ch_card8">Предзаказ</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+    <footer class="podval_section" id="podval_section">
+      <div class="container footer__container">
+
+        <!-- Главная колонка с формой -->
+        <div class="footer__column footer__column--main">
+          <a href="#" class="footer__logo">BumsHub</a>
+          <p class="footer__slogan">Мощные игровые ПК под заказ • Сборка за 24 часа • Гарантия 3 года </p>
+          
+          <!-- action - куда отправляются данные формы после нажатия кнопки "Отправить", # - заглушка, файлы никуда не отправляются -->
+          <!-- method - протоколы для обмены информацией в интернете. GET - посмотреть ничего не ломая (просмотр не важной информации, поиск по сайту, переход по страницам сайта и т.п),
+               POST - Используется для более важных вещей (вход в аккаунт, регистрация, отправка комментария, оформление заказа)  -->
+          <form class="footer__form" action="#" method="POST">
+            <input type="text" name="name" placeholder="Ваше имя" required>   <!-- placeholder - подсказка в поле ввода (введите пароль). required - не заполнив поле ввода, не получится отправить форму -->
+            <input type="tel" name="phone" placeholder="Номер телефона" required>  
+            <input type="email" name="email" placeholder="Введите почту (не обязательно)" >
+            <textarea name="message" placeholder="Что вас интересует? (Сборка, апгрейд, вопрос...)"></textarea> <!-- Многострочное поле ввода текста -->
+            <button type="submit" class="btn__neon">Отправить заявку</button> <!-- Кнопка собирает данные с формы и отправляет на адрес указанный в атрибуте action тега form(на 249 строке) -->
+          </form>
+        </div>
+
+        <!-- навигация -->
+        <div class="footer__column">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="#">Готовые сборки</a></li>
+            <li><a href="#">Кастомная сборка</a></li>
+            <li><a href="#">Комплектующие</a></li>
+            <li><a href="#">Акции и скидки</a></li>
+            <li><a href="#">Блог и обзоры</a></li>
+          </ul>
+        </div>
+
+        <!-- Контакты и соц.сети -->
+
+        <div class="footer__column">
+          <h4>Связь с нами</h4>
+          <ul class="footer__contacts">
+            <li>📞 <a href="tel:+74952247069">+7 (495) 224-70-69</a></li>
+            <li>📧 <a href="mailto:fsb@fsb.ru">fsb@fsb.ru</a></li>
+          </ul>
+        </div>
+
+        <!-- Нижняя полоса -->
+      
+      </div>
+      <div class="footer__bottom">
+        <div class="container">
+          <p>© 2026 BumsHub • Все права защищены</p>
+          <div class="footer__legal">
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Условия использования</a>
+            <a href="#">Гарантии и возврат</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+  </body> 
+</html>         

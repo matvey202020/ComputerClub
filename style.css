@@ -1,0 +1,697 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/*создаем переменные с цветами*/
+:root { 
+    --bg: #0f0f1a; 
+    --text: #FFFFFF;
+    --accent-purple: #a855f7;
+    --accent-pink: #ec4899;
+    --glow-cyan: 0 0 10px #00ffea,
+                 0 0 20px #00ffea,
+                 0 0 40px #4d00FF;
+    --glow-green: 0 0 40px rgba(0,255,0, 1);
+    --glow-red: 0 0 40px rgba(255, 0, 0, 0.8);
+    --glow-purple: 0 0 50px rgba(168, 85, 247, 1);
+    --glow-orange: 0 0 50px rgba(255, 136, 1, 1);
+    --glow-blue: 0 0 50px rgba(0, 81, 255, 1);
+    --glow-yellow: 0 0 50px rgba(238, 255, 0, 1);
+    --glow-black: 0 0 50px rgba(0, 0, 0, 1),
+                  0 0 50px rgba(0, 0, 0, 1),
+                  0 0 1050px rgba(0, 0, 0, 1);
+    --gradient-cyan: -webkit-linear-gradient(90deg, #00ffea,#000000);
+    --gradient-green:-webkit-linear-gradient(90deg, #00ff00,#000000);
+    --gradient-red: -webkit-linear-gradient(90deg, #c20000,#000000);
+    --gradient-purple: -webkit-linear-gradient(90deg, #a855f7,#000000);                                          
+    --gradient-orange: -webkit-linear-gradient(90deg, #ff8801,#000000);
+    --gradient-blue: -webkit-linear-gradient(90deg, #0051ff,#000000);
+    --gradient-yellow: -webkit-linear-gradient(90deg, #eeff00,#000000);                                   
+    --gradient-black: -webkit-linear-gradient(90deg, #ffffff,#000000);
+}   
+
+html {
+    scroll-behavior: smooth; /*плавный переход по якорным ссылкам*/
+}
+
+body{
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    flex-direction: column;  
+    font-size: clamp(14px, 2vw + 1rem, 20px);                                                                                                          
+}
+                                     
+header {
+    background-color: rgba(17, 17, 24, 0.486) ;
+    position: fixed;
+    display: flex;
+    width: auto;
+    z-index: 100; /* Чем выше число, тем выше элемент находится и тем ближе он к пользователю */
+    backdrop-filter: blur(10px); /* Размытие фона за элементом */
+    left:0;
+    right: 0;
+    padding: 1rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.promo_section {
+    display:flex;
+    min-height: 86vh;
+    align-items: center;
+    justify-content: center;
+    gap: 160px;
+}
+
+.promo_img {
+    width: 30%;
+    filter: drop-shadow(0 0 50px rgba(168, 85, 247, 1));
+}
+
+.promo_text {
+    padding: 70px;
+    box-shadow: 0 0 50px rgba(168, 85, 247, 1);
+    border-radius: 15px;
+    font-size: 1.6em;
+    line-height: 1;
+    background: radial-gradient(ellipse at center, #3c1f5e 0%, #1e0f38 50%, #0b0015 90%);
+}
+
+.promo_text h1 {
+    font-size: clamp(32px, 2vw + 2rem, 60px);
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(to right, #7B0461, #292555 );
+    -webkit-background-clip: text; /*обрезает фон элемента по форме текста*/
+    -webkit-text-fill-color: transparent; /*делает заливку текста прозрачной*/
+    font-weight: 700;
+}  
+
+.logo img{
+    width: 75px;
+    height: 75px;
+    filter: drop-shadow(0 0 2px var(--accent-purple)) /*позволяет накладывать эфекты на элементы*/
+}
+
+.searching_line {
+    width: 200px;
+    height: 25px;
+}
+
+.nav__menu {
+    display: flex;
+}
+
+.nav__menu.active {
+    display: flex;
+    flex-direction:column;
+    position: absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background-color: rgba(17, 17, 24, 0.9);
+    padding: 20px;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav__menu.active a {
+    margin-left: 0;
+}
+
+.nav__menu a{ 
+    color:#ddd;
+    margin-left: 40px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s; /*ОбЪявление плавного перехода для свойства color длительностью 0.3 секунды*/
+}
+
+.nav__menu a:hover{
+    color: var(--accent-purple);
+    text-decoration: underline;
+}
+
+/* chicken__burger menu */
+
+.chicken__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.chicken__burger span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text);
+    transition: all 0.3s;
+}
+
+/* элемент с селектором active отображается на странице */
+/* nth-child - способ обратиться к ребенку(элементу контеинера) контеинера */
+.chicken__burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.chicken__burger.active span:nth-child(2) {
+    opacity: 0; /* отвечает за прозрачность элемента */
+}
+
+.chicken__burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.btn_inCard {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.characteristics_btn {
+    padding: 10px 16px;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+    color:white;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.pre-order_btn {
+    padding: 10px 16px;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+    color:white;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.ch_card1 {
+    transition: all 0.3s linear;
+}
+
+.ch_card1:hover {
+    background: var(--gradient-cyan);
+    transition: all 0.3s linear;
+}
+
+.ch_card2:hover {
+    background: var(--gradient-red);
+}
+
+.ch_card3:hover {
+    background: var(--gradient-green)
+}
+
+.ch_card4:hover {
+    background: var(--gradient-purple);
+}
+
+.ch_card5:hover {
+    background: var(--gradient-orange);
+}
+
+.ch_card6:hover {
+    background: var(--gradient-blue);
+}
+
+.ch_card7:hover {
+    background: var(--gradient-yellow);
+}
+
+.ch_card8:hover {
+    background: var(--gradient-black);
+}
+
+.buy_btn {
+    text-decoration: none;
+    color:white;
+    margin: 60px auto;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+    padding: 20px 48px;
+    border-radius: 12px;
+    font-size: 22px;
+    font-weight: 600;
+    display: block;
+    width: fit-content;
+    box-shadow: var(--glow-purple);
+    transition: all 0.3s;
+}
+
+.buy_btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 140 rgba(168, 85, 247, 1)
+}
+
+.models_section {
+    display:grid;
+    /*grid-template-columns:repeat(auto-fit, minmax(380px, 1fr)); /* auto-fit сама решает сколько колонок поместить */
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-around;
+    padding: 80px 40px;
+    gap: 100px; 
+    flex-wrap: wrap;
+    background: radial-gradient(circle at center, #1a1a2e, var(--bg));
+    min-height: 15vh;
+}
+
+.computer_card {
+    width: 380px;
+    border-radius: 24px;
+    overflow: hidden; /*обрезает всё содержимое, которое не помещается в границе элемента */
+    background: rgba(20, 20, 35, 0.6);
+    transition: all 0.4s ease;
+}
+
+/*.computer_card::before {
+    content:"";
+    position:absolute;
+    inset: 0;
+    opacity: 0;  0- эелемент прозрачен, 1 - элемент виден
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.card1 .specs::before {
+    box-shadow: var(--glow-cyan); 
+}
+
+.computer_card:hover .specs::before{
+    opacity:1;
+}
+*/
+.card1 {
+    box-shadow: var(--glow-cyan);
+}
+
+.card2 {
+    box-shadow: var(--glow-red);
+}
+
+.card3 {
+    box-shadow: var(--glow-green);
+}
+
+.card4 {
+    box-shadow: var(--glow-purple);
+}
+
+.card5 {
+    box-shadow: var(--glow-orange);
+}
+
+.card6 {
+    box-shadow: var(--glow-blue);
+}
+
+.card7 {
+    box-shadow: var(--glow-yellow);
+}
+
+.card8 {
+    box-shadow: var(--glow-black);
+}
+
+.computer_card img {
+    width: 90%;
+    height: 350px;
+    object-fit: cover;
+    margin-left: 20px
+}
+
+.specs {
+    padding: 25px;
+    background-color: rgba(10, 10, 25, 0.8);
+}
+
+.specs h3 {
+    font-size: 24px;
+    margin: 0 0 20px;
+    text-align: center;
+}
+
+.specs table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.specs td {
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.specs td:last-child {
+    text-align: right;
+    font-weight: 500;
+}
+
+/*FOOTER*/
+
+.podval_section {
+    background: #0f0f1a;
+    padding: 80px 0 40px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* позволяет вставить контент перед основным содержимым */
+.podval_section::before{
+    content: "";
+    position: absolute;
+    inset: 0; 
+    /*создаем мягкое радиальное свечение. центр свечения находится в левом верхнем углу (30% слева, 20% сверху)
+    transparent 45% свечение быстро затухает и полностью исчезает на 45% радиуса*/
+    background: radial-gradient(circle at 30% 20%, rgba(123,94,255, 0.1), transparent 45%); /**/
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.footer__container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap:60px 40px;
+}
+
+.footer__logo{
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #7b5eff;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #7b5eff, #00ddeb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer__slogan {
+    font-size: 1.05rem;
+    opacity: 0.8;
+    max-width: 340px;
+    margin-bottom: 32px;   
+}
+
+.footer__form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 400px;
+}
+
+.footer__form input,
+.footer__form textarea {
+    padding: 14px 16px;
+    border: 1px solid rgba(123, 94, 255, 0.35);
+    color: white;
+    background-color: rgba(20, 20, 40, 0.65);
+    border-radius: 10px;
+    font-size: 1rem;
+    backdrop-filter: blur(10px); /* размытие фона */
+    transition: all 0.3s ease;
+}
+
+.footer__form input:focus, /* состояние когда ты нажимаешь на поле ввода */
+.footer__form textarea:focus {
+    outline: none; /* Убирает стандартную фокус обводку браузера  */
+    border-color: #7b5eff;
+    box-shadow: 0 0 0 3px rgba(123, 94, 255, 0.3);
+} 
+
+.footer__form textarea {
+    min-height: 100px;
+    resize: vertical; /* разрешает пользователю изменять размер поля только по вертикали */
+}
+
+.btn__neon {
+    background: linear-gradient(45deg, #7b5eff, #00ddeb);
+    color:white;
+    border:none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+.btn__neon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(123, 94, 255, 0.45);
+}
+
+.footer__column h4 {
+    font-size: 1.35rem;
+    margin-bottom: 20px;
+    color: #7b5eff;
+}
+
+.footer__column ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.footer__column a {
+    color: #c0c0ff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.2s ;
+}
+
+.footer__column a:hover {
+    color: #7b5eff;
+}
+
+.footer__bottom {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(123, 94, 255, 0.15);
+    font-size: 0.95rem;
+    opacity: 0.7; /* Прозрачность элемента */
+    width: 100vw;
+}
+
+.footer__contacts li {
+    margin-bottom: 12px;
+    display: flex;
+}
+
+.footer__bottom .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer__legal a{
+    text-decoration: none;
+    color: #a0a0ff;
+    margin-left: 24px;
+}
+
+.footer__legal a:hover {
+    color: #7b5eff;
+}
+
+.filters_section {
+    max-width: 1200px;
+    margin:60px auto 40px;
+    padding: 28px 32px;
+    background: rgba(20, 20, 35, 0.65);
+    border-radius: 16px;
+    border: 1px solid rgba(168, 85, 247, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(168, 85, 247, 0.12);
+    backdrop-filter: blur(8px);
+}
+
+.filters_section h2 {
+    margin: 0 0 24px;
+    text-align: center;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+    -webkit-background-clip: text; /*обрезает фон элемента по форме текста*/
+    -webkit-text-fill-color: transparent; /*делает заливку текста прозрачной*/
+    letter-spacing: 0.5px;
+}
+
+#filterForm {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap:20px 28px;
+    align-items: end;
+    grid-template-areas: 
+    "";
+}
+
+.item1 {
+    grid-area: ;
+}
+
+#filterForm label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ccc;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#filterForm input,
+#filterForm select {
+    max-width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    background: rgba(30, 30, 50, 0.7);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 10px;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+#filterForm input:focus,
+#filterForm select:focus {
+    outline:none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);
+}
+
+#filterForm button {
+    padding: 12px 24px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    min-height: 48px;
+}
+
+#applyFilters {
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+    color: white;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+#applyFilters:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.55);
+}
+
+#resetFilters {
+    background: linear-gradient(45deg, #e63946, #f48c96);
+    color:white;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.35);
+}
+
+#resetFilters:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.5);
+}
+
+/*@media (max-width: 800px) {
+    .computer_card {
+        width: 300px;
+    }
+}*/
+
+@media (max-width: 980px) {
+    .promo_section {
+        flex-direction: column; /* Скорректировать размеры элемента под размеры экрана ДЗ */
+    }
+    
+    .footer__container {
+        grid-template-columns: 1fr;
+        gap:50px;
+    }
+
+    .footer__form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .models_section {
+        grid-template-columns: repeat(1, 380px);
+    }
+    .promo_text {
+        padding: 18px;
+        font-size: clamp(12px, 2vw + 1rem, 20px);
+        border: none;
+        max-width: 80vw;
+    }
+    .promo_text h1 {
+        text-align: center;
+    }
+    .promo_img {
+        width: 350px;
+        margin-top: 120px;
+    }
+}
+
+@media (min-width: 480px) {
+    .promo_img {
+       width: 400px;
+       margin-top: 130px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer__bottom .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .podval_section {
+        padding: 60px 0 40px;
+    }
+}
+
+@media (min-width: 480px) {
+    .models_section {
+        grid-template-columns: repeat(1, 380px);
+    }
+}
+
+@media (min-width: 940px) {
+    .models_section {
+        grid-template-columns: repeat(2, 380px);
+    }
+}
+
+@media (min-width: 1420px) {
+    .models_section {
+        grid-template-columns: repeat(3, 380px);
+    }
+}
+
+@media (min-width: 1800px) {
+    .models_section {
+        grid-template-columns: repeat(4, 380px);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav__menu {
+        display: none;
+    }
+    .chicken__burger {
+        display: flex;
+    }
+    header {
+        justify-content: space-between;
+    }
+}
